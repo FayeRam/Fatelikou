@@ -792,12 +792,14 @@ class Reglages(Ecran):
         dossier = None
         if platform == "android":
             try:
+                # noinspection PyUnresolvedReferences
                 from android.permissions import request_permissions, Permission
                 request_permissions([Permission.WRITE_EXTERNAL_STORAGE,
                                      Permission.READ_EXTERNAL_STORAGE])
             except Exception:
                 pass
             try:
+                # noinspection PyUnresolvedReferences
                 from android.storage import primary_external_storage_path
                 dossier = os.path.join(primary_external_storage_path(), "Download")
             except Exception:
@@ -967,8 +969,11 @@ class FatelikouApp(App):
         if self.db.reglage("vibration") != "1" or platform != "android":
             return
         try:
-            from plyer import vibrator
-            vibrator.vibrate(duree)
+            # noinspection PyUnresolvedReferences
+            from jnius import autoclass
+            activite = autoclass("org.kivy.android.PythonActivity").mActivity
+            contexte = autoclass("android.content.Context")
+            activite.getSystemService(contexte.VIBRATOR_SERVICE).vibrate(int(duree * 1000))
         except Exception:
             pass
 
