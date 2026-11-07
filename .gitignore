@@ -1,0 +1,10 @@
+.buildozer/
+bin/
+__pycache__/
+*.db
+
+# Clé de signature : ne jamais la mettre dans le dépôt
+*.keystore
+*.jks
+keystore_base64.txt
+A_GARDER_SECRET.txt
