@@ -22,6 +22,8 @@ android.accept_sdk_license = True
 android.allow_backup = True
 android.release_artifact = aab
 android.debug_artifact = apk
+p4a.branch = develop
+p4a.commit = 1c9a4b4f817847bd8505d972d1a0e6f965929a88
 
 [buildozer]
 log_level = 2
